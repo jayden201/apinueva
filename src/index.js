@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
-const categoriaRouter = require('./routes/categoriaController');
 const productoRouter = require('./routes/productoController');
 const userRouter = require('./routes/userController');
 const authRouter = require('./routes/authController');
@@ -22,9 +21,12 @@ app.get('/',(req,res)=> {
 
 //Demas rutas de los controladores
 app.use('/api',authRouter);
-app.use('/api',tokenvalidation,categoriaRouter);
+
 app.use('/api',tokenvalidation,productoRouter);
 app.use('/api',tokenvalidation,userRouter);
+
+//app.use('/api',productoRouter);
+//app.use('/api',userRouter);
 
 
 //configuramos carpeta publica del servidor

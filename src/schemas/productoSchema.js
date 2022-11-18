@@ -15,27 +15,27 @@ const productoSchema = mongoose.Schema({
         type: Number,
         required:true
     },
-    preciofestivo:{
-        type: Number,
-        required:true
-    },
+   
     cantidaddisponible:{
         type: Number,
         required:true
     },
-    categoriaid:{
-        type: String,
-        required:true
-    },
-    imagen:[
-        {
-            productoimagen:
-            {
-                type: String,
-                required:true
-            }
+    imagen:
+      { 
+        data:String,
+        url: String, 
+        name:String
+      }
+
+    
+},
+{
+    statics: {
+        findById(_id) {
+          return this.find({ _id: _id });
         }
-    ]
-})
+      }
+    }
+    )
 
 module.exports = mongoose.model("productos",productoSchema);
